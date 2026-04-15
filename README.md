@@ -62,7 +62,7 @@ Expected outputs:
 - `combined_fixed_w08_batch.csv`
 - `combined_variable_w08_batch.csv`
 
-## Figures
+## Figures (mean curves)
 
 After the CSVs exist, generate figures with:
 
@@ -76,7 +76,46 @@ Expected outputs:
 - `fig2_wall_zone_vs_day.pdf`
 - `fig3_combined_ratio_tradeoff.pdf` (generated only if all ratio CSVs exist)
 
+## Run-level export and 95% CI figures
+
+To quantify between-run variability, export a run-level long table and re-draw figures with 95% confidence intervals.
+
+1) Export run-level plot data:
+
+```bash
+Rscript export_plot_data.R --nruns=50 --out=plot_data_runs.csv
+```
+
+This produces a long-format table with columns:
+
+`task, model, weight_wall, day, run, latency, wall_zone, target_quadrant`
+
+2) Plot figures with 95% CI (uses `plot_data_runs.csv` if present):
+
+```bash
+Rscript plot_figures_with_variability.R
+```
+
+Expected outputs:
+
+- `fig1_latency_vs_day_ci.pdf`
+- `figS1_wall_zone_vs_day_ci.pdf`
+- `fig2_combined_ratio_tradeoff_ci.pdf`
+
+## Example trajectories (qualitative)
+
+Representative fixed-task trajectories can be generated with:
+
+```bash
+Rscript make_example_trajectories.R
+```
+
+Expected output:
+
+- `figS2_example_trajectories_fixed.pdf`
+
 ## Notes
 
 - All wrappers call `set.seed(1)` for reproducibility.
 - Plotting inside the original model scripts is disabled in batch wrappers to avoid slowdowns.
+
