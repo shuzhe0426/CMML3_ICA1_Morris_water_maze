@@ -102,6 +102,11 @@ Expected outputs:
 - `figS1_wall_zone_vs_day_ci.pdf`
 - `fig2_combined_ratio_tradeoff_ci.pdf`
 
+These 95% CI figures are the final versions used in the report:
+
+- Main text: `fig1_latency_vs_day_ci.pdf`, `fig2_combined_ratio_tradeoff_ci.pdf`
+- Supplementary: `figS1_wall_zone_vs_day_ci.pdf`
+
 ## Example trajectories (qualitative)
 
 Representative fixed-task trajectories can be generated with:
@@ -114,8 +119,9 @@ Expected output:
 
 - `figS2_example_trajectories_fixed.pdf`
 
+This trajectory figure is used as a qualitative supplementary figure in the report.
+
 ## Notes
 
 - All wrappers call `set.seed(1)` for reproducibility.
 - Plotting inside the original model scripts is disabled in batch wrappers to avoid slowdowns.
-
